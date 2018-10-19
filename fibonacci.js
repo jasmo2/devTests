@@ -10,6 +10,7 @@
  * @param {number} num 
  */
 function fibo(num) {
+  if (num < 0) return "positive numbers"
   if (num === 0) return "0";
   const ans = [0, 1];
   for (let index = 2; index < num; index++) {
