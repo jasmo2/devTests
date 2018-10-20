@@ -37,7 +37,8 @@ const censusMembers = Object.freeze([
 * For this first problem build a function that counts the number of employees in an array and returns the result
 */
 function countEmployees(memberArray) {
-
+	const employees = memberArray.filter(member => !member.household_id);
+	return employees.length;
 }
 
 // Unit test to pass
@@ -47,11 +48,12 @@ assertEqual(countEmployees(censusMembers), 4);
 * Build a similar function for counting the number of dependents in an array. And please write a unit test for count dependents
 */
 function countDependents(memberArray) {
-
+	const dependents = memberArray.filter(member => member.household_id);
+	return dependents.length;
 }
 
 // Unit test to pass. Please build a unit test here
-assertEqual();
+assertEqual(countDependents(censusMembers), 3);
 
 /*
 * Now build a function that returns a new array with dependents mapped onto member. For example since mary is a dependent of Sue the new
@@ -65,36 +67,15 @@ assertEqual();
 *	         name: 'Mary',
 *	         household_id: 2
 *        }
-*    ]	
+*    ]
 * }
 *
 *
 * see mapHouseholdsExpectedResult variable for the fully expected result
 */
-function mapHouseholds() {
-
-}
-
-// Unit test to pass
-assertEqual(mapHouseholds(censusMembers), mapHouseholdsExpectedResult)
-
-/*
-* Now build a function that takes in an id and the array of members and returns all dependents that belong to the user
-* that has that id. If the id is of a dependent, or isn't in the censusMember array then the function should return null.
-* If there are no dependents then the function should return an empty arrray.
-* Please add any unit tests you think are appropriate.
-*/
-
-function getDependents() {
-
-}
-
-// please add unit tests here
-assertEqual(getDependents(1, censusMembers), []);
-assertEqual(getDependents(3, censusMembers), null);
 
 // UNIT TEST EXPECTED RESULTS
-var mapHouseholdsExpectedResult = [
+const mapHouseholdsExpectedResult = [
 	{
 		id: 1,
 		name: 'Bob'
@@ -128,6 +109,46 @@ var mapHouseholdsExpectedResult = [
 		]
 	}
 ]
+
+function mapHouseholds(memberArray) {
+	const employeesArr = memberArray.filter(member => !member.household_id);
+	const dependentsArr = memberArray.filter(member => member.household_id);
+
+	const mappedEmployees = employeesArr.reduce((previous, employee) => {
+		const dependents = dependentsArr.filter(dependent => dependent.household_id === employee.id)
+		let mappedEmployee = null;
+		if (dependents.length === 0) {
+			mappedEmployee = employee;
+		} else {
+			mappedEmployee = Object.assign({}, employee, { dependents });
+		}
+		return previous.concat(mappedEmployee);
+	}, []);
+
+	return mappedEmployees;
+}
+
+// Unit test to pass
+assertEqual(mapHouseholds(censusMembers), mapHouseholdsExpectedResult)
+
+/*
+* Now build a function that takes in an id and the array of members and returns all dependents that belong to the user
+* that has that id. If the id is of a dependent, or isn't in the censusMember array then the function should return null.
+* If there are no dependents then the function should return an empty arrray.
+* Please add any unit tests you think are appropriate.
+*/
+
+function getDependents(id, memberArray) {
+	if (memberArray.find(member => member.id === id).household_id) return null;
+
+	const dependents = memberArray.filter(member => member.household_id === id);
+	return dependents;
+}
+
+// please add unit tests here
+assertEqual(getDependents(1, censusMembers), []);
+assertEqual(getDependents(3, censusMembers), null);
+
 
 /**
   Description: Determines whether two elements are equal.

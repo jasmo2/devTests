@@ -110,6 +110,10 @@
 * Buzz
 */
 
+/**
+ * @function FizzBuzz
+ * print Fizz Buzz FizzBuzz or number depending in the input
+ */
 function FizzBuzz() {
     for (let index = 1; index <= 100; index++) {
         result = index;
