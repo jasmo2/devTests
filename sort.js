@@ -24,3 +24,14 @@ let testFour = [
     year: 1882
   }
 ];
+
+function sortArr(arr) {
+  return arr.sort(function (a, b) {
+    if (a.movie < b.movie) return -1;
+    if (a.movie > b.movie) return 1;
+    return 0;
+  })
+}
+
+const result = sortArr(testFour);
+console.log(JSON.stringify(result));

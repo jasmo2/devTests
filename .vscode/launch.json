@@ -7,6 +7,13 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "sort",
+      "program": "${workspaceFolder}/sort.js",
+      "runtimeExecutable": "${env:HOME}/.nvm/versions/node/v10.12.0/bin/node"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "FizzBuzz",
       "program": "${workspaceFolder}/fizzBuzz.js",
       "runtimeExecutable": "${env:HOME}/.nvm/versions/node/v10.12.0/bin/node"
