@@ -4,16 +4,16 @@
   "description": "testing",
   "main": "async.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "recursion": "node recursion.js",
+    "async": "node async.js",
     "eeAndDeps": "node eeAndDeps.js",
     "fibonacci": "node fibonacci.js",
     "fizzbuzz": "node fizzBuzz.js",
     "longestString": "node longestString.js",
+    "recursion": "node recursion.js",
     "sort": "node sort.js"
   },
   "engines": {
-    "node": "v10.12.0"
+    "node": "~ v10.12.0"
   },
   "keywords": [
     "dev",

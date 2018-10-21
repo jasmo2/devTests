@@ -7,6 +7,13 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "async",
+      "program": "${workspaceFolder}/async.js",
+      "runtimeExecutable": "${env:HOME}/.nvm/versions/node/v10.12.0/bin/node"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "recursion",
       "program": "${workspaceFolder}/recursion.js",
       "runtimeExecutable": "${env:HOME}/.nvm/versions/node/v10.12.0/bin/node"
