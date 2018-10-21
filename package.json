@@ -5,6 +5,7 @@
   "main": "async.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "recursion": "node recursion.js",
     "eeAndDeps": "node eeAndDeps.js",
     "fibonacci": "node fibonacci.js",
     "fizzbuzz": "node fizzBuzz.js",
